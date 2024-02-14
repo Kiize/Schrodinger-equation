@@ -8,7 +8,7 @@ import time
 start = time.time()
 
 # Initialize grid.
-N = 100        # number of points
+N = 100       # number of points
 x = np.linspace(-1, 1, N)   # grid
 y = np.linspace(-1, 1, N)   # grid y
 z = np.linspace(-1, 1, N)   # grid z
@@ -29,7 +29,7 @@ def U(p, a, A):
 # Parameters.
 a = 0.1 
 A = 0.5
-k_max = 3
+k_max = 10
 
 # Hamiltonian.
 
@@ -53,5 +53,7 @@ psi = lambda n: eigvec.T[n]
 for n in range(k_max):
     np.save(f'data_schro_3D/eigvec_{n}.npy', psi(n))
 
-print(f'Elapsed time: {time.time() - start:.2f}')
+np.save(f'data_schro_3D/eigvals.npy', eigval)
+
+print(f'Elapsed time: {time.time() - start:.2f} s')
 
